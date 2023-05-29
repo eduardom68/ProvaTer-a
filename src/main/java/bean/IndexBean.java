@@ -16,15 +16,12 @@ public class IndexBean {
     private String password;
     
     public String login() {
-        // Verifica se o login e a senha correspondem a um funcionário cadastrado
         Funcionario funcionario = FuncionarioDao.buscarFuncionarioPorLogin(username);
         
         if (funcionario != null && funcionario.getSenha().equals(password)) {
-            // Armazena temporariamente o funcionário na sessão
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("funcionarioLogado", funcionario);
             return "listagem_incidente.xhtml?faces-redirect=true";
         } else {
-            // Exibe mensagem de erro de login inválido
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro de login", "Credenciais inválidas"));
             return null;
         }

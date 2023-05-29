@@ -35,13 +35,10 @@ public class FuncionarioBean {
 
     public void salvarEdicao() {
         try {
-            FuncionarioDao.editar(funcionario); // Atualiza o funcionário no banco de dados
+            FuncionarioDao.editar(funcionario);
             sucesso("Sucesso", "Funcionário editado com sucesso");
-
-            // Remove o funcionário antigo da lista
             lista.removeIf(f -> f.getId().equals(funcionario.getId()));
 
-            // Obtém a lista atualizada do banco de dados
             lista = FuncionarioDao.listarTodos();
 
             funcionario = new Funcionario();

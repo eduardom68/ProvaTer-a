@@ -61,7 +61,7 @@ public class FuncionarioDao {
 	            query.setParameter("username", username);
 	            return (Funcionario) query.getSingleResult();
 	        } catch (Exception e) {
-	            return null; // Funcionário não encontrado ou ocorreu um erro na busca
+	            return null;
 	        } finally {
 	            em.close();
 	        }

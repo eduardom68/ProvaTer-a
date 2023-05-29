@@ -188,24 +188,15 @@ public class CadastroIncidenteBean {
         incidente.setTipoViolacao(tipoViolacao);
         incidente.setDataHoraSalvo(dataHoraSalvo);
 
-        // Chame o método de salvar do seu DAO para persistir o objeto incidente no banco de dados
         IncidenteDao incidenteDao = new IncidenteDao();
         incidenteDao.salvar(incidente);
-
-        // Exiba uma mensagem de sucesso
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastro de Incidente",
                         "Incidente cadastrado com sucesso"));
-
-        // Obtenha a instância do ListagemIncidenteBean
         ListagemIncidenteBean listagemBean = FacesContext.getCurrentInstance()
                 .getApplication()
                 .evaluateExpressionGet(FacesContext.getCurrentInstance(), "#{listagemIncidenteBean}", ListagemIncidenteBean.class);
-
-        // Chame o método init do ListagemIncidenteBean para atualizar a lista de incidentes
         listagemBean.init();
-
-        // Limpe os campos após o cadastro
         limparCampos();
     }
 
