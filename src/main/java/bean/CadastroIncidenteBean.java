@@ -193,9 +193,7 @@ public class CadastroIncidenteBean {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastro de Incidente",
                         "Incidente cadastrado com sucesso"));
-        ListagemIncidenteBean listagemBean = FacesContext.getCurrentInstance()
-                .getApplication()
-                .evaluateExpressionGet(FacesContext.getCurrentInstance(), "#{listagemIncidenteBean}", ListagemIncidenteBean.class);
+        ListagemIncidenteBean listagemBean = FacesContext.getCurrentInstance().getApplication().evaluateExpressionGet(FacesContext.getCurrentInstance(), "#{listagemIncidenteBean}", ListagemIncidenteBean.class);
         listagemBean.init();
         limparCampos();
     }
