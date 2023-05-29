@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Cadastro de Incidente</title>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+</h:head>
+
+<h:body>
+    <div class="form-container">
+        <h2 class="titulo-principal">Cadastro de Incidente</h2>
+        <h:form id="Relatorio" styleClass="formulario">
+            <p:panelGrid columns="8" styleClass="tabela-incidentes">
+                <p:outputLabel for="nomeVitima" value="Nome da Vítima:" />
+                <p:inputText id="nomeVitima" value="#{cadastroIncidenteBean.nomeVitima}" required="true" styleClass="campo-input" />
+            
+                <p:outputLabel for="generoVitima" value="Gênero da Vítima:" />
+                <p:selectOneMenu id="generoVitima" value="#{cadastroIncidenteBean.generoVitima}" required="true" styleClass="campo-select">
+                    <f:selectItem itemValue="Feminino" itemLabel="Feminino" />
+                    <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+                </p:selectOneMenu>
+
+            <p:outputLabel for="idadeVitima" value="Idade da Vítima:" />
+            <p:inputText id="idadeVitima" value="#{cadastroIncidenteBean.idadeVitima}" required="true" />
+            
+            <p:outputLabel for="serieTurnoVitima" value="Série/Turno da Vítima:" />
+            <p:inputText id="serieTurnoVitima" value="#{cadastroIncidenteBean.serieTurnoVitima}" required="true" />
+
+            <p:outputLabel for="enderecoVitima" value="Endereço da Vítima:" />
+            <p:inputText id="enderecoVitima" value="#{cadastroIncidenteBean.enderecoVitima}" required="true" />
+
+            <p:outputLabel for="nomeAgressor" value="Nome do Agressor:" />
+            <p:inputText id="nomeAgressor" value="#{cadastroIncidenteBean.nomeAgressor}" required="true" />
+
+            <p:outputLabel for="generoAgressor" value="Gênero do Agressor:" />
+            <p:selectOneMenu id="generoAgressor" value="#{cadastroIncidenteBean.generoAgressor}" required="true">
+                <f:selectItem itemValue="Feminino" itemLabel="Feminino" />
+                <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="idadeAgressor" value="Idade do Agressor:" />
+            <p:inputText id="idadeAgressor" value="#{cadastroIncidenteBean.idadeAgressor}" required="true" />
+
+            <p:outputLabel for="grauParentescoAgressor" value="Grau de Parentesco do Agressor:" />
+            <p:inputText id="grauParentescoAgressor" value="#{cadastroIncidenteBean.grauParentescoAgressor}" required="true" />
+
+            <p:outputLabel for="ocupacaoAgressor" value="Ocupação do Agressor:" />
+            <p:inputText id="ocupacaoAgressor" value="#{cadastroIncidenteBean.ocupacaoAgressor}" required="true" />
+
+            <p:outputLabel for="racaAgressor" value="Raça do Agressor:" />
+            <p:selectOneMenu id="racaAgressor" value="#{cadastroIncidenteBean.racaAgressor}" required="true">
+                <f:selectItem itemValue="Branco" itemLabel="Branco" />
+                <f:selectItem itemValue="Preto" itemLabel="Preto" />
+                <f:selectItem itemValue="Pardo" itemLabel="Pardo" />
+                <f:selectItem itemValue="Indígena" itemLabel="Indígena" />
+                <f:selectItem itemValue="Amarelo" itemLabel="Amarelo" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="identidadeGeneroAgressor" value="Identidade de Gênero do Agressor:" />
+            <p:inputText id="identidadeGeneroAgressor" value="#{cadastroIncidenteBean.identidadeGeneroAgressor}" required="true" />
+
+            <p:outputLabel for="orientacaoSexualAgressor" value="Orientação Sexual do Agressor:" />
+            <p:selectOneMenu id="orientacaoSexualAgressor" value="#{cadastroIncidenteBean.orientacaoSexualAgressor}" required="true">
+                <f:selectItem itemValue="Heterossexual" itemLabel="Heterossexual" />
+                <f:selectItem itemValue="Homossexual" itemLabel="Homossexual" />
+                <f:selectItem itemValue="Bissexual" itemLabel="Bissexual" />
+                <f:selectItem itemValue="Pansexual" itemLabel="Pansexual" />
+                <f:selectItem itemValue="Outro" itemLabel="Outro" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="escolaridadeAgressor" value="Escolaridade do Agressor:" />
+            <p:selectOneMenu id="escolaridadeAgressor" value="#{cadastroIncidenteBean.escolaridadeAgressor}" required="true">
+                <f:selectItem itemValue="Ensino fundamental" itemLabel="Ensino fundamental" />
+                <f:selectItem itemValue="Ensino médio" itemLabel="Ensino médio" />
+                <f:selectItem itemValue="Ensino superior" itemLabel="Ensino superior" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="relatorioIncidente" value="Relatório do Incidente:" />
+            <p:inputTextarea id="relatorioIncidente" value="#{cadastroIncidenteBean.relatorioIncidente}" required="true" rows="6" cols="30" />
+
+            <p:outputLabel for="tipoViolacao" value="Tipo de Violação:" />
+            <p:selectOneMenu id="tipoViolacao" value="#{cadastroIncidenteBean.tipoViolacao}" required="true">
+                <f:selectItem itemValue="Violência Física" itemLabel="Violência Física" />
+                <f:selectItem itemValue="Automutilação" itemLabel="Automutilação" />
+                <f:selectItem itemValue="Bullying" itemLabel="Bullying" />
+                <f:selectItem itemValue="Negligência" itemLabel="Negligência" />
+                <f:selectItem itemValue="Suicídio" itemLabel="Suicídio" />
+                <f:selectItem itemValue="Violência Sexual" itemLabel="Violência Sexual" />
+                <f:selectItem itemValue="Gravidez &lt; 14 anos" itemLabel="Gravidez &lt; 14 anos" />
+                <f:selectItem itemValue="Violência Psicológica" itemLabel="Violência Psicológica" />
+                <f:selectItem itemValue="Trabalho Infantil" itemLabel="Trabalho Infantil" />
+            </p:selectOneMenu>
+            <p:outputLabel for="dataHoraSalvo" value="Data de Envio:" />
+            <p:calendar id="dataHoraSalvo" value="#{cadastroIncidenteBean.dataHoraSalvo}" showOn="button" required="true" />
+            </p:panelGrid>
+
+            <p:commandButton value="Salvar" action="#{cadastroIncidenteBean.salvar}" update="Relatorio" styleClass="btn" />
+        </h:form>
+        <br/>
+    </div>
+</h:body>
+</html>

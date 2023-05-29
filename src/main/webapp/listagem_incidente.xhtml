@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <title>Listagem de Incidentes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="titulo-principal">Listagem de Incidentes</h1>
+
+        <p:dataTable value="#{listagemIncidenteBean.incidentes}" var="incidente" class="tabela-incidentes">
+            <p:column headerText="Nome da Vítima">
+                #{incidente.nomeVitima}
+            </p:column>
+            <p:column headerText="Gênero da Vítima">
+                #{incidente.generoVitima}
+            </p:column>
+            <p:column headerText="Idade da Vítima">
+                #{incidente.idadeVitima}
+            </p:column>
+            <p:column headerText="Série">
+                #{incidente.serieTurnoVitima}
+            </p:column>
+            <p:column headerText="Endereço">
+                #{incidente.enderecoVitima}
+            </p:column>
+            <p:column headerText="Nome do Agressor">
+                #{incidente.nomeAgressor}
+            </p:column>
+            <p:column headerText="Gênero do Agressor">
+                #{incidente.generoAgressor}
+            </p:column>
+            <p:column headerText="Idade do Agressor">
+                #{incidente.idadeAgressor}
+            </p:column>
+            <p:column headerText="Grau de Parentesco do Agressor">
+                #{incidente.grauParentescoAgressor}
+            </p:column>
+            <p:column headerText="Ocupação do Agressor">
+                #{incidente.ocupacaoAgressor}
+            </p:column>
+            <p:column headerText="Raça do Agressor">
+                #{incidente.racaAgressor}
+            </p:column>
+            <p:column headerText="Identidade de Gênero do Agressor">
+                #{incidente.identidadeGeneroAgressor}
+            </p:column>
+            <p:column headerText="Orientação Sexual do Agressor">
+                #{incidente.orientacaoSexualAgressor}
+            </p:column>
+            <p:column headerText="Escolaridade do Agressor">
+                #{incidente.escolaridadeAgressor}
+            </p:column>
+            <p:column headerText="Tipo de Violação">
+                #{incidente.tipoViolacao}
+            </p:column>
+            <p:column headerText="Data Envio:">
+                #{incidente.dataHoraSalvo}
+            </p:column>
+            <p:column headerText="Relatório do Incidente">
+            <p:inputTextarea value="#{incidente.relatorioIncidente}" rows="10" cols="50" disabled="true" />
+            </p:column>
+        </p:dataTable>
+
+        <br/>
+
+        <h:form>
+            <p:commandButton action="#{listagemIncidenteBean.deslogar}" value="Deslogar" styleClass="link-deslogar" />
+        </h:form>
+
+        <br/>
+
+        <h:link outcome="listagem_usuario.xhtml" value="Listagem de Usuários" styleClass="link-listagem-usuarios" />
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<title>Página de listagem</title>
+	</h:head>
+	<h:body>
+		<h:form id="formulario">
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate/>
+			</p:messages>
+			<p:panel header="Página de listagem">
+				<p:link outcome="index" value="Voltar"/>
+				<p:dataTable value="#{funcionarioBean.lista}" var="f">
+					<p:column headerText="Login">
+						<p:outputLabel value="#{f.login}"/>
+					</p:column>
+					<p:column headerText="Senha">
+						<p:outputLabel value="#{f.senha}"/>
+					</p:column>
+					<p:column headerText="Data Cadastro">
+						<p:outputLabel value="#{f.dataCadastro}"/>
+					</p:column>
+					<p:column headerText="Nome">
+						<p:outputLabel value="#{f.nome}"/>
+					</p:column>
+                    <p:column headerText="Ações">
+                      <p:commandButton value="Editar" oncomplete="PF('editarDialog').show()" update=":dialogEditar">
+                           <f:setPropertyActionListener target="#{funcionarioBean.funcionario}" value="#{f}" />
+                      </p:commandButton>
+
+                        <p:commandButton value="Excluir" action="#{funcionarioBean.excluir(f)}" update=":formulario:messages"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Deslogar" action="#{indexBean.logout}" update=":formulario:messages" styleClass="logout-button"/>
+			</p:panel>
+		</h:form>
+		
+		<p:dialog id="dialogEditar" header="Editar Funcionário" widgetVar="editarDialog" modal="true"
+        showEffect="fade" hideEffect="fade" resizable="false" draggable="false" closable="false">
+			<h:form id="formEditar">
+				<p:inputText value="#{funcionarioBean.funcionario.login}" label="Login" />
+				<p:inputText value="#{funcionarioBean.funcionario.senha}" label="Senha" />
+				<p:inputText value="#{funcionarioBean.funcionario.nome}" label="Nome" />
+				
+				<p:outputLabel value="Data Cadastro:" />
+                <p:outputLabel value="#{funcionarioBean.funcionario.dataCadastro}" />
+				
+				<p:commandButton value="Salvar" action="#{funcionarioBean.salvarEdicao}" update=":formulario:messages" oncomplete="PF('editarDialog').hide()" />
+				<p:commandButton value="Cancelar" onclick="PF('editarDialog').hide()" />
+			</h:form>
+		</p:dialog>
+	</h:body>
+</html>
